@@ -27,3 +27,5 @@ Description of what you're modeling:
 <!-- display your many-to-many image inline here -->
 
 ## Release 5: Reflection
+
+Interesting challenge, it definitely helped me with understanding the many ways that tables can relate to one another. I enjoyed the graphical interface, although I am curious how it relates to real databases; are there similar platforms that can be used to graphically create a real database or is this just a learning tool? Also I am eager to start creating real databases of my own.
