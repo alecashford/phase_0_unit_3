@@ -5,8 +5,8 @@
 
 
 ### My Quiz Results:
-<!-- Include the link to your image (saved in the imgs folder) to display it inline. -->
 
+https://github.com/zagadooga/phase_0_unit_3/blob/master/week_7/imgs/sql_zoo_results.png
 
 
 

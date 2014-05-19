@@ -22,7 +22,7 @@ The relationship between `users` and `tweets` is:
 To identify which tweet comes from which user. They are definitely connected; within each user category there must be a tweet table, and within that tweet table that contains the information for every tweet.
 
 ## Release 3: Schema Design
-<!-- Include your image (inline) of your schema -->
+https://github.com/zagadooga/phase_0_unit_3/blob/master/week_7/imgs/solo.png
 
 ## Release 4: SQL Statements
 <!-- Include your SQL Statements. How can you make markdown files show blocks of code? -->
