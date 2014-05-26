@@ -27,7 +27,31 @@ var scores = [ [80, 70, 70, 100],
 // Write your code below.
 
 
-
+var gradebook = {
+    Joseph : {
+        testScores : scores[students.indexOf("Joseph")]
+    },
+    Susan : {
+        testScores : scores[students.indexOf("Susan")]
+    },
+    William : {
+        testScores : scores[students.indexOf("William")]
+    },
+    Elizabeth : {
+        testScores : scores[students.indexOf("Elizabeth")]
+    },
+    addScore : function(name, score) {
+        scores[students.indexOf(name)].push(score);
+    },
+    getAverage : function(arr) {
+        arr = scores[students.indexOf(arr)];
+        var total = 0;
+        for (var i = 0; i < arr.length; i++) {
+            total = total + arr[i];
+        }
+    return total / arr.length;
+    }
+};
 
 
 
@@ -44,14 +68,16 @@ var scores = [ [80, 70, 70, 100],
 // __________________________________________
 // Reflect
 
+/*
+I considered refactoring this challenge a little to make it less verbose, hard coding
+in the indexes of the names of the students. However, I like my solution better as it
+will always return the correct answer, even if the values are completely scrambled up.
+On the other hand, perhaps there are instances where hard coding is more appropriate,
+and this may be one of them. Experience will inform this opinion more.
 
 
 
-
-
-
-
-
+*/
 // __________________________________________
 // Driver Code:  Do not alter code below this line.
 

@@ -30,7 +30,7 @@ var votes = {
   "Xavier": { president: "Steve", vicePresident: "Hermann", secretary: "Fred", treasurer: "Ivy" },
   "Yvonne": { president: "Bob", vicePresident: "Zane", secretary: "Fred", treasurer: "Hermann" },
   "Zane": { president: "Louise", vicePresident: "Hermann", secretary: "Fred", treasurer: "Mary" }
-}
+};
 
 // Tally the votes in voteCount.
 var voteCount = {
@@ -38,20 +38,9 @@ var voteCount = {
   vicePresident: {},
   secretary: {},
   treasurer: {}
-}
+};
 
-/* The name of each student receiving a vote for an office should become a property 
-of the respective office in voteCount.  After Alex's votes have been tallied, 
-voteCount would be ...
 
-  var voteCount = {
-    president: { Bob: 1 },
-    vicePresident: { Devin: 1 },
-    secretary: { Gail: 1 },
-    treasurer: { Kerry: 1 }
-  }
-
-*/
 
 
 /* Once the votes have been tallied, assign each officer position the name of the 
@@ -61,7 +50,7 @@ var officers = {
   vicePresident: undefined,
   secretary: undefined,
   treasurer: undefined
-}
+};
 
 // Pseudocode
 
@@ -69,6 +58,87 @@ var officers = {
 // __________________________________________
 // Initial Solution
 
+var prezList = [];
+var vpList = [];
+var secList = [];
+var tresList = [];
+
+function countVotes(votes) {
+    for (var a in votes) {
+        var prez = votes[a].president;
+        if (voteCount.president[prez] === undefined) {
+            voteCount.president[prez] = 1;
+            prezList.push(prez);
+        } else {
+            voteCount.president[prez] += 1;
+            }
+        }
+    for (var b in votes) {
+        var vp = votes[b].vicePresident;
+        if (voteCount.vicePresident[vp] === undefined) {
+            voteCount.vicePresident[vp] = 1;
+            vpList.push(vp);
+        } else {
+            voteCount.vicePresident[vp] += 1;
+            }
+        }
+    for (var c in votes) {
+        var sec = votes[c].secretary;
+        if (voteCount.secretary[sec] === undefined) {
+            voteCount.secretary[sec] = 1;
+            secList.push(sec);
+        } else {
+            voteCount.secretary[sec] += 1;
+            }
+        }
+    for (var d in votes) {
+        var tres = votes[d].treasurer;
+        if (voteCount.treasurer[tres] === undefined) {
+            voteCount.treasurer[tres] = 1;
+            tresList.push(tres);
+        } else {
+            voteCount.treasurer[tres] += 1;
+            }
+        }
+}
+
+function appoint() {
+    var min = 1;
+    for (var a in prezList) {
+        var prez = prezList[a];
+        if (voteCount.president[prez] > min) {
+            min = voteCount.president[prez];
+            officers.president = prez;
+            }
+        }
+    min = 1;
+    for (var b in vpList) {
+        var vp = vpList[b];
+        if (voteCount.vicePresident[vp] > min) {
+            min = voteCount.vicePresident[vp];
+            officers.vicePresident = vp;
+            }    
+        }
+    min = 1;
+    for (var c in secList) {
+        var sec = secList[c];
+        if (voteCount.secretary[sec] > min) {
+            min = voteCount.secretary[sec];
+            officers.secretary = sec;
+            }
+        }
+    min = 1;
+    for (var i in tresList) {
+        var tres = secList[i];
+        if (voteCount.treasurer[tres] > min) {
+            min = voteCount.treasurer[tres];
+            officers.treasurer = tres;
+            }
+        }
+}
+
+countVotes(votes);
+appoint();
 
 
 
@@ -85,12 +155,14 @@ var officers = {
 
 // __________________________________________
 // Reflection
+/*
+This challenge took me a long time (~4 hours) but was a good refresher of a lot of javascript concepts.
+I definitely feel more equipped to handle other javascript puzzles. The frustrating thing I found
+was when something wouldn't work, and I had not idea why. You just have to go through a time-consuming
+process of pouring over your code, printing out different sections, and trying again. Ultimately,
+my answer was not very DRY, but it also less taxing on the computer.
 
-
-
-
-
-
+*/
 // __________________________________________
 // Driver Code:  Do not alter code below this line.
 
