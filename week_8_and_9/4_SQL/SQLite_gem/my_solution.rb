@@ -8,19 +8,21 @@ require 'sqlite3'
 $db = SQLite3::Database.open "congress_poll_results.db"
 
 
-def print_arizona_reps
-  puts "AZ REPRESENTATIVES"
-  az_reps = $db.execute("SELECT name FROM congress_members WHERE location = 'AZ'")
-  az_reps.each { |rep| puts rep }
+def print_other_reps
+  puts "OTHER REPRESENTATIVES"
+  reps = $db.execute("SELECT name, location FROM congress_members WHERE location IN ('NJ', 'NY', 'ME', 'FL', 'AK') ORDER BY location")
+  reps.each { |rep, state| puts "#{rep} - #{state}" }
 end
 
 def print_longest_serving_reps(minimum_years)  #sorry guys, oracle needs me, i didn't finish this!
   puts "LONGEST SERVING REPRESENTATIVES"
-  puts $db.execute("SELECT name FROM congress_members WHERE years_in_congress > #{minimum_years}")
+  reps = $db.execute("SELECT name, years_in_congress FROM congress_members WHERE years_in_congress > #{minimum_years}")
+  reps.each { |reps, years| puts "#{reps} - #{years}"}
 end
 
 def print_lowest_grade_level_speakers
   puts "LOWEST GRADE LEVEL SPEAKERS (less than < 8th grade)"
+  puts $db.execute("SELECT name FROM congress_members WHERE grade_current < 8")
 end
 
 def print_separator
@@ -30,7 +32,7 @@ def print_separator
 end
 
 
-print_arizona_reps
+print_other_reps
 
 print_separator
 
@@ -60,10 +62,8 @@ print_lowest_grade_level_speakers
 
 
 # REFLECTION- Include your reflection as a comment below.
-# How does the sqlite3 gem work?  What is the variable `$db` holding?  
-# Try to use your knowledge of ruby and OO to decipher this as well as h
-# ow the `#execute` method works.  Take a stab at explaining the line 
-# `$db.execute("SELECT name FROM congress_members WHERE years_in_congress 
-#   > #{minimum_years}")`.  Try to explain this as clearly as possible for 
-# your fellow students.  
-# If you're having trouble, find someone to pair on this explanation with you.
+=begin
+The sqlite gem works by interacting with a database through injecting pieces of SQL code into a database
+interface, seeming to return, as a list, whatever data comes back.
+I like the gem a lot. it is definitely something that I see a lot of use for, and will make special use of 
+it as I am moving forward.
